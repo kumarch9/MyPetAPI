@@ -1,0 +1,28 @@
+
+{"geninfo":
+ {"name":"jina",
+  "pettype":"dog",
+  "age":5,
+  "gender":"female",
+  "DOB":"04-08-2015","weight":"35kg",
+  "breed":"indian",
+  "card_number":"c0001",
+  "rabies_vaccine_number":"6",
+  "licence_number":"lic/01",
+  "any_allergies":"No",
+  "contact_number":"00001111",
+  "address":"delhi"},
+"activityinfo":
+ {"like":"milk",
+  "dislike":["chilli","flies","mouse"],
+  "place_to_play":"home bed"},
+"feedinfo":
+ {"brand_name":"petgree",
+  "non_brand_name":"mk food",
+  "morning_amount":"250g",
+  "noon_amount":"500gm",
+  "night_amount":"200gm"},
+"vetinfo":
+ {"regular_vet":"dr bhanaka",
+  "regular_vet_contact":"110110"}
+}
