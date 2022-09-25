@@ -1,13 +1,36 @@
-package model
+package pets
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
 
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+// use it when admin get request of pet data
 type Pet struct {
 	Id           primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	GenInfo      PetGeneralInfo     `bson:"geninfo,omitempty" json:"geninfo,omitempty" validate:"required" `
-	ActivityInfo PetActivities      `bson:"activityinfo,omitempty" json:"activityinfo,omitempty" validate:"required" `
-	FeedInfo     PetFeed            `bson:"feedinfo,omitempty" json:"feedinfo,omitempty" validate:"required" `
-	VetInfo      PetVeterinary      `bson:"vetinfo,omitempty" json:"vetinfo,omitempty" validate:"required" `
+	GenInfo      PetGeneralInfo     `bson:"geninfo" json:"geninfo" validate:"required" `
+	ActivityInfo PetActivities      `bson:"activityinfo" json:"activityinfo" validate:"required" `
+	FeedInfo     PetFeed            `bson:"feedinfo" json:"feedinfo" validate:"required" `
+	VetInfo      PetVeterinary      `bson:"vetinfo" json:"vetinfo" validate:"required" `
+	CreatorInfo  Creator            `bson:"creatorinfo,omitempty" json:"creatorinfo,omitempty"`
+	UpdaterInfo  Updater            `bson:"updaterinfo,omitempty" json:"updaterinfo,omitempty"`
+	DeleterInfo  Deleter            `bson:"deleterinfo,omitempty" json:"deleterinfo,omitempty"`
+	CreatedAt    time.Time          `bson:"createdAt" json:"createdAt"`
+	UpdatedAt    time.Time          `bson:"updatedAt" json:"updatedAt"`
+	DeletedAt    time.Time          `bson:"deletedAt" json:"deletedAt"`
+}
+
+// use it when user get request of pet data
+type PetBind_User struct {
+	Id           primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
+	GenInfo      PetGeneralInfo     `bson:"geninfo" json:"geninfo" validate:"required" `
+	ActivityInfo PetActivities      `bson:"activityinfo" json:"activityinfo" validate:"required" `
+	FeedInfo     PetFeed            `bson:"feedinfo" json:"feedinfo" validate:"required" `
+	VetInfo      PetVeterinary      `bson:"vetinfo" json:"vetinfo" validate:"required" `
+	CreatedAt    time.Time          `bson:"createdAt" json:"createdAt"`
+	UpdatedAt    time.Time          `bson:"updatedAt" json:"updatedAt"`
+	DeletedAt    time.Time          `bson:"deletedAt" json:"deletedAt"`
 }
 
 type PetGeneralInfo struct {
@@ -43,4 +66,19 @@ type PetFeed struct {
 type PetVeterinary struct {
 	Regular_Vet         string `bson:"regular_vet,omitempty" json:"regular_vet,omitempty" validate:"required" `
 	Regular_Vet_Contact string `bson:"regular_vet_contact,omitempty" json:"regular_vet_contact,omitempty" validate:"required" `
+}
+
+type Creator struct {
+	CreatorName  string `bson:"creatorname,omitempty" json:"creatorname,omitempty"`
+	CreatorEmail string `bson:"creatoremail,omitempty" json:"creatoremail,omitempty"`
+}
+
+type Updater struct {
+	UpdaterName  string `bson:"updatername,omitempty" json:"UpdaterName,omitempty"`
+	UpdaterEmail string `bson:"updateremail,omitempty" json:"updateremail,omitempty"`
+}
+
+type Deleter struct {
+	DeleterName  string `bson:"deletername,omitempty" json:"deletername,omitempty"`
+	DeleterEmail string `bson:"deleteremail,omitempty" json:"deleteremail,omitempty"`
 }
