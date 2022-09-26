@@ -14,9 +14,8 @@ import (
 // 	ctxTime, _ = context.WithTimeout(context.TODO(), 20*time.Second)
 // )
 
-//const mongoURI = "mongodb+srv://root:12345@cluster0.wlbxjpe.mongodb.net/?retryWrites=true&w=majority"
+const mongoURI = "mongodb+srv://xxxx:xxx@cluster0.wlbxjpe.mongodb.net/?retryWrites=true&w=majority"
 
-const mongoURI = "mongodb://localhost:27017"
 
 func ConnectionDb() *mongo.Client {
 	fmt.Println("connection string is:", mongoURI)
