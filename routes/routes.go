@@ -12,11 +12,12 @@ import (
 
 func PetRoute(ginR *gin.Engine) {
 
+	//be default home page handler in template use it
 	h_route := ginR.Group("/")
-	// en.GET("/home", home.HomePage())
-	// en.POST("/signout", signout.SignOutAll())
 	h_route.GET("home", home.HomePage())
 	h_route.POST("signout", signout.SignOutAll())
+
+	//signIn handle for admin and user
 	l_route := ginR.Group("/signin")
 	l_route.POST("/user/:email/:password", signin.UserLogin())
 	l_route.POST("/admin/:email/:password", signin.AdminLogin())
@@ -35,5 +36,6 @@ func PetRoute(ginR *gin.Engine) {
 	c_route.POST("/post", userctr.AddUser())
 	c_route.PUT("update/:Id", userctr.EditUserById())
 	c_route.DELETE("/delete/:Id", userctr.DeleteUserById())
+	c_route.GET("/all", userctr.GetUsers())
 
 }
